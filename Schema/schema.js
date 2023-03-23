@@ -47,7 +47,6 @@ const RootQueryType = new GraphQLObjectType({
             type: ClientsType,
             args: { id: { type: GraphQLID } },
             resolve(parent, arg) {
-                console.log(arg);
                 return Client.findById(arg.id);
             },
         },
@@ -104,7 +103,6 @@ const mutation = new GraphQLObjectType({
                 phone: { type: GraphQLString },
             },
             async resolve(parent, args) {
-                console.log('rachked ', args);
                 const updatedClient = await Client.findByIdAndUpdate(
                     args.id,
                     {
